@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false">
+        <layer-list android:autoMirrored="true">
+            <item android:drawable="@drawable/ic_bg_thumb_toggle_light"/>
+            <item android:gravity="center" android:drawable="@drawable/ic_bi_sun"/>
+        </layer-list>
+    </item>
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:drawable="@drawable/ic_bg_thumb_toggle_dark"/>
+            <item android:gravity="center" android:drawable="@drawable/ic_bx_bx_moon_dark"/>
+        </layer-list>
+    </item>
+</selector>

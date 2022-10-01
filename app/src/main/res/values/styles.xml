@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="buttonNumber" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_26</item>
+        <item name="android:textStyle">bold</item>
+        <item name="lineHeight" tools:targetApi="p">@dimen/sp_40</item>
+        <item name="android:background">@drawable/ic_custom_button</item>
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button</item>
+        <item name="android:onClick">numberAction</item>
+    </style>
+
+    <style name="buttonOperator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/dp_37</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/sp_40</item>
+        <item name="android:textSize">@dimen/sp_26</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:onClick">operatorAction</item>
+    </style>
+
+    <style name="buttonRowTop" parent="@style/Theme.AppCompat.DayNight">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:lineHeight" tools:targetApi="p">@dimen/sp_40</item>
+        <item name="android:textSize">@dimen/sp_26</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

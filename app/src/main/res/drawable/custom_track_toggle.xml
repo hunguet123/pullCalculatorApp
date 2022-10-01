@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false">
+        <layer-list>
+            <item android:drawable="@drawable/ic_bg_track_toggle_light"/>
+            <item android:gravity="right" android:end="16dp" android:drawable="@drawable/ic_bx_moon"/>
+        </layer-list>
+    </item>
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:drawable="@drawable/ic_bg_track_toggle_dark"/>
+            <item android:gravity="left" android:start="16dp" android:drawable="@drawable/ic_bi_sun_dark"/>
+        </layer-list>
+    </item>
+</selector>

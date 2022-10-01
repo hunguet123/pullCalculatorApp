@@ -1,18 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Switch
+        android:id="@+id/toggle_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/dp_150"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="@dimen/dp_150"
+        android:minHeight="@dimen/dp_48"
+        android:thumb="@drawable/custom_thumb_toggle"
+        android:track="@drawable/custom_track_toggle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <ImageView
+        android:id="@+id/history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_history_light" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/dp_410"
+        android:layout_height="match_parent"
+        android:layout_marginTop="210dp"
+        app:cardBackgroundColor="#FF5ACEFF"
+        app:cardCornerRadius="@dimen/dp_34"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toggle_switch">
+
+        <GridLayout
+            android:id="@+id/calculator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_bg_calculatora"
+            android:columnCount="4"
+            android:paddingStart="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_26"
+            android:paddingEnd="@dimen/dp_20"
+            android:rowCount="5"
+            tools:ignore="RtlSymmetry">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_columnSpan="3"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:background="@drawable/ic_bg_frame_0"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="RtlHardcoded">
+
+                <Button
+                    android:id="@+id/buttonAc"
+                    android:onClick="allClearAction"
+                    style="@style/buttonRowTop"
+                    android:text="@string/ac"
+                    />
+
+                <Button
+                    android:id="@+id/button"
+                    style="@style/buttonRowTop"
+                    android:onClick="deleteAction"
+                    android:text="@string/txt_delete"
+                    />
+
+                <Button
+                    android:id="@+id/buttonPercent"
+                    android:onClick="percentAction"
+                    style="@style/buttonRowTop"
+                    android:text="@string/txt_percent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_rowSpan="4"
+                android:layout_marginStart="@dimen/dp_20"
+                android:background="@drawable/ic_bg_frame_right"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttonDivision"
+                    style="@style/buttonOperator"
+                    android:text="@string/txt_division" />
+
+                <Button
+                    android:id="@+id/buttonMultiply"
+                    style="@style/buttonOperator"
+                    android:text="@string/txt_multiply" />
+
+                <Button
+                    android:id="@+id/buttonMinus"
+                    style="@style/buttonOperator"
+                    android:text="@string/txt_minus" />
+
+                <Button
+                    android:id="@+id/buttonPlus"
+                    style="@style/buttonOperator"
+                    android:text="@string/txt_plus" />
+
+                <Button
+                    android:id="@+id/buttonEqual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_custom_button"
+                    android:onClick="resultAction"
+                    android:text="@string/txt_equal"
+                    android:textSize="@dimen/sp_40"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_row="1"
+                android:layout_rowSpan="3"
+                android:layout_column="0"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button1"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_1" />
+
+                <Button
+                    android:id="@+id/button4"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_4" />
+
+                <Button
+                    android:id="@+id/button7"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_7" />
+
+                <Button
+                    android:id="@+id/buttonDots"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_dots"
+                    android:textColor="#1565C0"
+                    tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_row="1"
+                android:layout_rowSpan="3"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button2"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_2" />
+
+                <Button
+                    android:id="@+id/button5"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_5" />
+
+                <Button
+                    android:id="@+id/button8"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_8" />
+
+                <Button
+                    android:id="@+id/button0"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_row="1"
+                android:layout_rowSpan="3"
+                android:layout_column="2"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button3"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_3" />
+
+                <Button
+                    android:id="@+id/button6"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_6" />
+
+                <Button
+                    android:id="@+id/button9"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_9" />
+
+                <Button
+                    android:id="@+id/button00"
+                    style="@style/buttonNumber"
+                    android:text="@string/txt_00" />
+            </LinearLayout>
+
+        </GridLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txt_calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="@dimen/sp_22"
+        app:layout_constraintEnd_toEndOf="@+id/history"
+        app:layout_constraintTop_toBottomOf="@+id/history" />
+
+    <TextView
+        android:id="@+id/txt_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textSize="@dimen/sp_40"
+        app:layout_constraintEnd_toEndOf="@+id/txt_calculate"
+        app:layout_constraintTop_toBottomOf="@+id/txt_calculate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
