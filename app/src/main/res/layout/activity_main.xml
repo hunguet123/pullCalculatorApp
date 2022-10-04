@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Switch
-        android:id="@+id/toggle_switch"
+        android:id="@+id/switchTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_150"
@@ -24,38 +24,37 @@
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <ImageView
-        android:id="@+id/history"
+        android:id="@+id/imageHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="40dp"
-        android:contentDescription="@string/todo"
+        android:contentDescription="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_history_light" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/dp_410"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="@dimen/dp_210"
         app:cardBackgroundColor="#FF5ACEFF"
         app:cardCornerRadius="@dimen/dp_34"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggle_switch">
+        app:layout_constraintTop_toBottomOf="@+id/switchTheme">
 
         <GridLayout
-            android:id="@+id/calculator"
+            android:id="@+id/gridCalculator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_bg_calculatora"
+            android:background="@drawable/custom_bg_calculator"
             android:columnCount="4"
             android:paddingStart="@dimen/dp_20"
             android:paddingTop="@dimen/dp_26"
             android:paddingEnd="@dimen/dp_20"
             android:rowCount="5"
             tools:ignore="RtlSymmetry">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,28 +62,24 @@
                 android:layout_column="0"
                 android:layout_columnSpan="3"
                 android:layout_marginBottom="@dimen/dp_20"
-                android:background="@drawable/ic_bg_frame_0"
+                android:background="@drawable/bg_frame_0"
                 android:gravity="center"
                 android:orientation="horizontal"
                 tools:ignore="RtlHardcoded">
-
                 <Button
                     android:id="@+id/buttonAc"
-                    android:onClick="allClearAction"
+                    android:onClick="onClickAllClear"
                     style="@style/buttonRowTop"
-                    android:text="@string/ac"
-                    />
-
+                    android:text="@string/ac" />
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/buttonDelete"
                     style="@style/buttonRowTop"
-                    android:onClick="deleteAction"
-                    android:text="@string/txt_delete"
-                    />
+                    android:onClick="onClickDelete"
+                    android:text="@string/txt_delete" />
 
                 <Button
                     android:id="@+id/buttonPercent"
-                    android:onClick="percentAction"
+                    android:onClick="onClickPercent"
                     style="@style/buttonRowTop"
                     android:text="@string/txt_percent" />
             </LinearLayout>
@@ -92,7 +87,7 @@
             <LinearLayout
                 android:layout_rowSpan="4"
                 android:layout_marginStart="@dimen/dp_20"
-                android:background="@drawable/ic_bg_frame_right"
+                android:background="@drawable/bg_frame_right"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -121,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_custom_button"
-                    android:onClick="resultAction"
+                    android:onClick="onClickResult"
                     android:text="@string/txt_equal"
                     android:textSize="@dimen/sp_40"
                     android:textStyle="bold"
@@ -220,23 +215,23 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/txt_calculate"
+        android:id="@+id/textViewCalculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
         android:textSize="@dimen/sp_22"
-        app:layout_constraintEnd_toEndOf="@+id/history"
-        app:layout_constraintTop_toBottomOf="@+id/history" />
+        app:layout_constraintEnd_toEndOf="@+id/imageHistory"
+        app:layout_constraintTop_toBottomOf="@+id/imageHistory" />
 
     <TextView
-        android:id="@+id/txt_result"
+        android:id="@+id/textViewResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text=""
         android:textSize="@dimen/sp_40"
-        app:layout_constraintEnd_toEndOf="@+id/txt_calculate"
-        app:layout_constraintTop_toBottomOf="@+id/txt_calculate" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewCalculate"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCalculate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

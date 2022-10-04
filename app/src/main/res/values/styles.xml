@@ -9,7 +9,7 @@
         <item name="lineHeight" tools:targetApi="p">@dimen/sp_40</item>
         <item name="android:background">@drawable/ic_custom_button</item>
         <item name="android:buttonStyle">@style/Widget.AppCompat.Button</item>
-        <item name="android:onClick">numberAction</item>
+        <item name="android:onClick">onClickNumber</item>
     </style>
 
     <style name="buttonOperator">
@@ -21,7 +21,7 @@
         <item name="android:lineHeight" tools:targetApi="p">@dimen/sp_40</item>
         <item name="android:textSize">@dimen/sp_26</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:onClick">operatorAction</item>
+        <item name="android:onClick">onClickOperator</item>
     </style>
 
     <style name="buttonRowTop" parent="@style/Theme.AppCompat.DayNight">

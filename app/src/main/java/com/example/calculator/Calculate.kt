@@ -3,7 +3,7 @@ package com.example.calculator
 import java.util.ArrayDeque
 
 class Calculate {
-    private var list : MutableList<Any> = mutableListOf()
+    private var inputList : MutableList<Any> = mutableListOf()
 
     fun digitsOperator(txtInput : String) {
         var currentDigit = ""
@@ -11,27 +11,27 @@ class Calculate {
             if (character.isDigit() || character == '.') {
                 currentDigit += character
             } else  {
-                list.add(currentDigit.toFloat())
-                list.add(character)
+                inputList.add(currentDigit.toFloat())
+                inputList.add(character)
                 currentDigit = ""
             }
         }
         if (currentDigit != "") {
-            list.add(currentDigit.toFloat())
+            inputList.add(currentDigit.toFloat())
         }
     }
 
     fun clearList() {
-        list.clear()
+        inputList.clear()
     }
 
-    fun result() : Float {
+    fun getResult() : Float {
         return evaluatePostfix()
     }
 
 
     // kiem tra do lon cua dau cong tru nhan chia
-    private fun priority(operator : Any) : Int {
+    private fun getPriority(operator : Any) : Int {
         if (operator !is Char) return -2
         when (operator) {
             '+', '-' -> return 0
@@ -42,7 +42,7 @@ class Calculate {
 
     //tinh gia tri postfix
     private fun evaluatePostfix() : Float {
-        val postFix = infixToPostfix()
+        val postFix = convertInfixToPostfix()
         val stack = ArrayDeque<Any>()
             for (i in postFix) {
                 if (i is Float) {
@@ -62,17 +62,18 @@ class Calculate {
         return stack.pop() as Float
     }
 
-    private fun infixToPostfix() : MutableList<Any> {
+    private fun convertInfixToPostfix() : MutableList<Any> {
         val postFix : MutableList<Any> = mutableListOf()
         val stack = ArrayDeque<Any>()
-        for (i in list) {
-                if (i is Float) {
+        for (i in inputList) {
+            when (i) {
+                is Float -> {
                     postFix.add(i)
                 }
-               else if (i == '(') {
+                '(' -> {
                     stack.push(i)
                 }
-                else if (i == ')') {
+                ')' -> {
                     while (!stack.isEmpty() && stack.peek() != "(" ) {
                         postFix.add(stack.pop())
                     }
@@ -80,13 +81,14 @@ class Calculate {
                         stack.pop()
                     }
                 }
-                else {
-                    while (!stack.isEmpty() && priority(i as Char) <= priority(stack.peek() as Char)) {
+                else -> {
+                    while (!stack.isEmpty() && getPriority(i as Char) <= getPriority(stack.peek() as Char)) {
                         postFix.add(stack.pop())
                     }
                     stack.push(i)
                     if (stack.size == 1) continue
                 }
+            }
         }
         while (!stack.isEmpty()) {
             postFix.add(stack.pop())

@@ -10,71 +10,71 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private var calculate = Calculate()
     private var inputText = ""
-    private var canAddOperation : Boolean = false
+    private var canAddOperation = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
-    fun numberAction(view: View) {
+    fun onClickNumber(view: View) {
         if (view is Button) {
-            if ((txt_calculate.text.isEmpty() || txt_calculate.text.toString().last() == '.') && view.text.toString() == ".")
+            if ((textViewCalculate.text.isEmpty() || textViewCalculate.text.toString().last() == '.') && view.text.toString() == ".")
             {
                 canAddOperation = false
             } else {
-                txt_calculate.append(view.text)
+                textViewCalculate.append(view.text)
                 inputText += view.text.toString()
-                canAddOperation = txt_calculate.text.toString().last() != '.'
+                canAddOperation = textViewCalculate.text.toString().last() != '.'
             }
         }
     }
 
-    fun operatorAction(view: View) {
+    fun onClickOperator(view: View) {
         if (view is Button && canAddOperation) {
-            txt_calculate.append(view.text)
+            textViewCalculate.append(view.text)
             inputText += view.text.toString()
             canAddOperation = false
         }
     }
 
-    fun allClearAction(view: View) {
-        txt_result.text = ""
-        txt_calculate.text = ""
+    fun onClickAllClear(view: View) {
+        textViewResult.text = ""
+        textViewCalculate.text = ""
         calculate.clearList()
         canAddOperation = false
         inputText = ""
     }
 
-    fun resultAction(view: View) {
+    fun onClickResult(view: View) {
         if (canAddOperation) {
             if (inputText.isNotEmpty()) {
                 calculate.digitsOperator(inputText)
-                txt_result.text = calculate.result().toString()
+                textViewResult.text = calculate.getResult().toString()
                 calculate.clearList()
             } else {
-                txt_result.text = ""
+                textViewResult.text = ""
             }
         } else {
-            txt_result.text = ""
-            Toast.makeText(this, "CÓ LỖI NHẬP SỐ", Toast.LENGTH_SHORT).show()
+            textViewResult.text = ""
+            Toast.makeText(this, R.string.error_input_number, Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun percentAction(view: View) {
+    fun onClickPercent(view: View) {
         if (view is Button && canAddOperation) {
-            txt_calculate.append(view.text)
+            textViewCalculate.append(view.text)
             inputText += "÷100"
             canAddOperation = true
         }
     }
 
-    fun deleteAction(view: View) {
+    fun onClickDelete(view: View) {
         if (view is Button) {
-            if (txt_calculate.text.isNotEmpty()) {
-                val textCalculate = txt_calculate.text
+            if (textViewCalculate.text.isNotEmpty()) {
+                val textCalculate = textViewCalculate.text
                 var lastElement: Char = textCalculate[textCalculate.length - 1]
-                txt_calculate.text = textCalculate.substring(0, textCalculate.length - 1)
+                textViewCalculate.text = textCalculate.substring(0, textCalculate.length - 1)
                 inputText = if (lastElement == '%') {
                     inputText.substring(0, inputText.length - 4)
                 } else {
