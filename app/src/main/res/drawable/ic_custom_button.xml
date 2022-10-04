@@ -1,0 +1,23 @@
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:state_pressed="false">
+    <vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="70dp"
+        android:height="70dp"
+        android:viewportWidth="70"
+        android:viewportHeight="70">
+      <path
+          android:pathData="M35,35m-35,0a35,35 0,1 1,70 0a35,35 0,1 1,-70 0"
+          android:fillColor="#ffffff"
+          android:fillAlpha="0.3"/>
+    </vector>
+  </item>
+  <item android:state_pressed="true">
+      <shape android:shape="rectangle">
+          <size android:width="70dp"
+            android:height="70dp"/>
+          <corners android:radius="15dp"/>
+          <solid android:color = "@color/white"></solid>
+      </shape>
+  </item>
+</animated-selector>
+
